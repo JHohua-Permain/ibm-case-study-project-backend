@@ -54,6 +54,6 @@ app.post('/login', async (req, res) => {
 });
 
 
-app.listen(3050, ()=>{
-    console.log("Server is Listening 3050");
+app.listen(3001, ()=>{
+    console.log("Server is Listening 3001");
 });
