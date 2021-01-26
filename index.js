@@ -26,7 +26,7 @@ var query = {client_name: "ABC23"};
 });
 
 app.get("/insert1", async (req, res) => {
-    let fruits = new Set(["apple", "orange", "mango"]);
+    let tagwords = new Set(["apple", "orange", "mango"]);
     const caseobj = new CaseStudyModel({
 
         project_id: "xyz1",
@@ -35,11 +35,22 @@ app.get("/insert1", async (req, res) => {
         problem: "agggsdhdh",
         idea: "raeywjrjy",
         impact: "dshmhmdhn",
-        tags: fruits
+        tags: tagwords
 
         });
     await caseobj.save();
     res.send("Inserted data to casestudies");
+});
+//to insert data to the database
+app.post('/insert-cs', async (req,res)=>{
+    const case_study =new CaseStudyModel({project_id:req.body.project_id, client_name:req.body.client_name, industry:req.body.industry,
+        problem:req.body.problem, idea:req.body.idea, impact:req.body.impact});
+    await case_study.save();
+    res.send('Inserted Data');
+});
+app.post('/login', async (req, res) => {
+    //Need to connect this with the database.
+    await req.body.username['username'] === 'ibm' && req.body.password['password'] ==='ibm' ? res.send({login:'success'}) : res.send({login:'fail'})
 });
 
 
